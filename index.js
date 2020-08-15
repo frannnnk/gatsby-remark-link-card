@@ -40,7 +40,7 @@ const getHTML = pageData => {
 const getPageData = async (browser, url) => {
   try {
 
-    console.log("Accessing "+url);
+    console.log("[gatsby-remark-link-card-plus] Accessing "+url);
     const page = await browser.newPage()
 
     await page.goto(url)
