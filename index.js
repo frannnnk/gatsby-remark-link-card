@@ -39,6 +39,8 @@ const getHTML = pageData => {
 
 const getPageData = async (browser, url) => {
   try {
+
+    console.log("Accessing "+url);
     const page = await browser.newPage()
 
     await page.goto(url)
@@ -58,7 +60,7 @@ const getPageData = async (browser, url) => {
         "meta[property='og:image']",
         el => el.content
       ),
-      page.$eval("link[rel='shortcut icon']", el => el.href)
+      page.$eval("link[rel='icon']", el => el.href)
     ])
     return {
       title,
@@ -68,6 +70,8 @@ const getPageData = async (browser, url) => {
       favicon,
     }
   } catch (e) {
+    console.log("Accessing "+url+" error.");
+    console.log(e);
     return ErrorFormat
   }
 }
